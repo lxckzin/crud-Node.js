@@ -1,0 +1,17 @@
+<h2>Professores</h2>
+<a href="/professores/add" class="btn btn-success mb-3">Adicionar Professor</a>
+<table class="table">
+  <thead><tr><th>ID</th><th>Nome</th><th>Ações</th></tr></thead>
+  <tbody>
+    <% professores.forEach(p => { %>
+      <tr>
+        <td><%= p.id %></td>
+        <td><%= p.nome %></td>
+        <td>
+          <a href="/professores/edit/<%= p.id %>" class="btn btn-primary">Editar</a>
+          <a href="/professores/delete/<%= p.id %>" class="btn btn-danger">Excluir</a>
+        </td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
