@@ -1,0 +1,12 @@
+<h2>Matricular <%= aluno.nome %> em Curso</h2>
+<form method="POST" action="/alunos/<%= aluno.id %>/cursos">
+  <div class="form-group">
+    <label>Curso</label>
+    <select name="cursoId" class="form-control">
+      <% cursos.forEach(curso => { %>
+        <option value="<%= curso.id %>"><%= curso.nome %></option>
+      <% }) %>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary">Matricular</button>
+</form>

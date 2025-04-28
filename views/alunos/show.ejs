@@ -1,15 +1,34 @@
 <h2>Alunos</h2>
 <a href="/alunos/add" class="btn btn-success mb-3">Adicionar Aluno</a>
 <table class="table">
-  <thead><tr><th>ID</th><th>Nome</th><th>Ações</th></tr></thead>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Cursos</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
   <tbody>
-    <% alunos.forEach(a => { %>
+    <% alunos.forEach(aluno => { %>
       <tr>
-        <td><%= a.id %></td>
-        <td><%= a.nome %></td>
+        <td><%= aluno.id %></td>
+        <td><%= aluno.nome %></td>
         <td>
-          <a href="/alunos/edit/<%= a.id %>" class="btn btn-primary">Editar</a>
-          <a href="/alunos/delete/<%= a.id %>" class="btn btn-danger">Excluir</a>
+          <% if (aluno.Cursos.length > 0) { %>
+            <ul>
+              <% aluno.Cursos.forEach(curso => { %>
+                <li><%= curso.nome %></li>
+              <% }) %>
+            </ul>
+          <% } else { %>
+            Nenhum curso
+          <% } %>
+        </td>
+        <td>
+          <a href="/alunos/edit/<%= aluno.id %>" class="btn btn-primary btn-sm">Editar</a>
+          <a href="/alunos/delete/<%= aluno.id %>" class="btn btn-danger btn-sm">Excluir</a>
+          <a href="/alunos/<%= aluno.id %>/cursos" class="btn btn-info btn-sm">Matricular Curso</a>
         </td>
       </tr>
     <% }) %>
